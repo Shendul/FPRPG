@@ -13,19 +13,14 @@ public class CellShape : MonoBehaviour {
 
 	void Start () {
 
-		if (!IsInGrid ()) {
+		/*if (!IsInGrid ()) {
 
 			// Temp sound for board failure, need better SFX.
 			SoundManager.Instance.PlayOneShot (SoundManager.Instance.gameOver);
 
 			Invoke("BoardFailure", .5f);
-		}
+		}*/
 
-	}
-		
-	void BoardFailure () {
-		Destroy(gameObject);
-		// TODO: erase board and deal dmg/remove all ap.
 	}
 
 	void IncreaseSpeed() { // TODO: actually have enemy use this.
@@ -59,7 +54,7 @@ public class CellShape : MonoBehaviour {
 			}
 
 			// -------------- Drop Down --------------
-			if (Input.GetKey ("s") || Time.time - lastMoveDown >= CellShape.fallSpeed) {
+			if (Input.GetKeyDown ("s") || Time.time - lastMoveDown >= CellShape.fallSpeed) {
 				transform.position += new Vector3 (0, -1, 0);
 				if (!IsInGrid ()) {
 					transform.position += new Vector3 (0, 1, 0);
@@ -74,8 +69,10 @@ public class CellShape : MonoBehaviour {
 					// disable movement when no longer able to drop.
 					enabled = false;
 
-					// Bring in next cell shape.
-					FindObjectOfType<CellShapeSpawner> ().SpawnShape ();
+					// Bring in next cell shape or handle board failure.
+					if(!FindObjectOfType<CellShapeSpawner>().IsBoardFailure()) {
+						FindObjectOfType<CellShapeSpawner>().SpawnShape();
+					}
 
 					// Play the sound
 					SoundManager.Instance.PlayOneShot (SoundManager.Instance.shapeStop);

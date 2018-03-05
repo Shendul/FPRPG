@@ -27,6 +27,17 @@ public class GameBoard : MonoBehaviour {
 
 	}
 
+	public static bool IsBoardFailure() {
+		
+		for (int col = 0; col < 15; ++col) {
+
+			if (gameBoard [col, 27] != null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static bool IsRowFull(int row) {
 		// IsRowFull is meant to return true if a row is full of cells.
 
@@ -62,6 +73,21 @@ public class GameBoard : MonoBehaviour {
 					gameBoard[col, j-1].position += new Vector3(0, -1, 0);
 
 				}
+			}
+		}
+	}
+
+	public static void DeleteAllRows() {
+		// DeleteAllRows removes all cells on the gameboard.
+
+		for (int row = 0; row < 30; ++row) {
+
+			for (int col = 0; col < 15; ++col) {
+
+				if (gameBoard [col,row] != null)
+					Destroy (gameBoard [col, row].gameObject.transform.parent.gameObject);
+				gameBoard [col, row] = null;
+
 			}
 		}
 	}
