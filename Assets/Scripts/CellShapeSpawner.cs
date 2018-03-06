@@ -9,11 +9,17 @@ public class CellShapeSpawner : MonoBehaviour {
 
 	public GameObject[] cellShapes;
 	public GameObject[] nextCellShapes;
+	public Sprite[] cellSprites;
 
 	GameObject upNextObject = null;
+	GameObject currentShape = null;
 
 	int shapeIndex = 0;
 	int nextShapeIndex = 0;
+	int symbol1 = 0;
+	int symbol2 = 0;
+	int symbol3 = 0;
+	int symbol4 = 0;
 
 
 	public bool IsBoardFailure() {
@@ -56,9 +62,18 @@ public class CellShapeSpawner : MonoBehaviour {
 
 		shapeIndex = nextShapeIndex;
 
-		Instantiate (cellShapes [shapeIndex],
+		currentShape = Instantiate (cellShapes [shapeIndex],
 			transform.position,
 			Quaternion.identity);
+
+		currentShape.transform.GetChild (0).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol1];
+		currentShape.transform.GetChild (1).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol2];
+		currentShape.transform.GetChild (2).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol3];
+		currentShape.transform.GetChild (3).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol4];
 
 		nextShapeIndex = Random.Range (0, 8);
 
@@ -70,6 +85,21 @@ public class CellShapeSpawner : MonoBehaviour {
 		upNextObject = Instantiate (nextCellShapes [nextShapeIndex], 
 			nextShapePos,
 			Quaternion.identity);
+
+		symbol1 = Random.Range (0, 2);
+		symbol2 = Random.Range (0, 2);
+		symbol3 = Random.Range (0, 2);
+		symbol4 = Random.Range (0, 2);
+
+
+		upNextObject.transform.GetChild (0).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol1];
+		upNextObject.transform.GetChild (1).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol2];
+		upNextObject.transform.GetChild (2).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol3];
+		upNextObject.transform.GetChild (3).gameObject.
+			GetComponent<SpriteRenderer>().sprite = this.cellSprites[symbol4];
 	}
 
 	void Start () {

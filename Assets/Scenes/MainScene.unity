@@ -338,6 +338,9 @@ MonoBehaviour:
   - {fileID: 1459028828073304, guid: 6e779223c93a05f4c81230ada94cf9e3, type: 2}
   - {fileID: 1456704050836920, guid: 4d45d21bb672b1b47ba6bcd4ace90eb9, type: 2}
   - {fileID: 1385818805790066, guid: 2f0aa112bc2e4be41a75587a3a350f55, type: 2}
+  cellSprites:
+  - {fileID: 21300000, guid: 66063ab54636c9745bfd07ef5f9c7a00, type: 3}
+  - {fileID: 21300000, guid: aad350e9bebda3e4581b532c7a99b065, type: 3}
 --- !u!4 &226856285
 Transform:
   m_ObjectHideFlags: 0
