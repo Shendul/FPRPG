@@ -54,8 +54,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CellGroup.cs" />
-     <Compile Include="Assets\Scripts\CellShape.cs" />
-     <Compile Include="Assets\Scripts\CellShapeSpawner.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\GameBoard.cs" />
      <Compile Include="Assets\Scripts\Hero.cs" />
