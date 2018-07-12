@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CellShapeSpawner : MonoBehaviour {
 
+	// BUG LIST: Gameboard breaks when orange shape is up next.
+
 
 	public GameObject[] cellShapes;
 	public GameObject[] nextCellShapes;
